@@ -15,14 +15,14 @@ using namespace std;
 
 class Utilities {
 public:
-	void sendMessage(string message) {
-		cout << message << endl;
+	void sendMessage(string MESSAGE) {
+		cout << MESSAGE << endl;
 	}
 
-	 void setDirectory(string dir) {
-		string command = "cd " + dir;
+	 void setDirectory(string F_DIR) {
+		string CMD_STR = "cd " + F_DIR;
 		try {
-			system(command.c_str());
+			system(CMD_STR.c_str());
 			sendMessage("Path set successfully.\n");
 		}
 		catch (...) {
@@ -32,23 +32,22 @@ public:
 		}
 	}
 
-	void readFromFile(string fileName) {
-		ifstream file;
+	void readFromFile(string F_FNAME_STR) {
 		try {
-			file.open(fileName);
+			ifstream IF_STREAM;
 
-			ifstream file;
-			file.open(fileName);
+			IF_STREAM.open(F_FNAME_STR);
 
-			string content;
+			string F_CONTENT;
 
 			sendMessage("Will start spamming in 5 seconds...");
 
 			Sleep(5000);
-			while (getline(file, content)) {
+			while (getline(IF_STREAM, F_CONTENT)) {
 				CClipboardXX clipboard;
-				clipboard << content;
-				clipboard >> content;
+				clipboard << F_CONTENT;
+				Sleep(100);
+				clipboard >> F_CONTENT;
 			}
 		}
 		catch (...) {
