@@ -13,26 +13,25 @@ using namespace std;
 
 int main()
 {
-	Utilities utils;
+	Utilities UTILS;
 
 	system("title Spambot v1.0");
 	system("color 0f");
 
-	utils.sendMessage("Spambot v1.0 has started. Initiating now...");
+	UTILS.sendMessage("Spambot v1.0 has started. Initiating now...");
+	UTILS.sendMessage("Enter path to file: ");
 
-	utils.sendMessage("Enter path to file: ");
+	string F_DIR;
+	cin >> F_DIR;
 
-	string path;
-	cin >> path;
+	UTILS.setDirectory(F_DIR);
 
-	utils.setDirectory(path);
+	UTILS.sendMessage("Enter file name: ");
 
-	utils.sendMessage("Enter file name: ");
+	string F_NAME_STR;
+	cin >> F_NAME_STR;
 
-	string fileName;
-	cin >> fileName;
-
-	utils.readFromFile(fileName);
+	UTILS.readFromFile(F_NAME_STR);
 
 	system("pause");
 }
