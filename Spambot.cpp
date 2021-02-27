@@ -1,4 +1,4 @@
-#include "Utils.cpp"
+#include "Utils.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -13,25 +13,24 @@ using namespace std;
 
 int main()
 {
-	Utilities UTILS;
+	Utils _Utils;
 
 	system("title Spambot v1.0");
 	system("color 0f");
 
-	UTILS.sendMessage("Spambot v1.0 has started. Initiating now...");
-	UTILS.sendMessage("Enter path to file: ");
+	_Utils.U_PRINT("Spambot v1.0 has started. Initiating now...");
+	_Utils.U_PRINT("Enter path to file: ");
 
-	string F_DIR;
-	cin >> F_DIR;
+	string FILE_DIR;
+	cin >> FILE_DIR;
+	_Utils.U_PRINT(FILE_DIR);
 
-	UTILS.setDirectory(F_DIR);
-
-	UTILS.sendMessage("Enter file name: ");
+	_Utils.U_PRINT("Enter file name: ");
 
 	string F_NAME_STR;
 	cin >> F_NAME_STR;
 
-	UTILS.readFromFile(F_NAME_STR);
+	_Utils.U_PRINT(F_NAME_STR);
 
 	system("pause");
 }
