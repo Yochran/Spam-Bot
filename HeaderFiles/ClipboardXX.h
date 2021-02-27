@@ -1,7 +1,5 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS
-
 #include <string>
 #include <exception>
 #include <string.h>
@@ -51,7 +49,6 @@ private:
         }
     }
 
-
 public:
     ~CClipboardWindows() {
         CloseClipboard();
@@ -62,7 +59,13 @@ public:
             throw CExceptionXX("Cannot empty clipboard!");
 
         HGLOBAL pGlobal = GlobalAlloc(GMEM_FIXED, (Length + 1) * sizeof(char));
+
+        #ifdef _MSC_VER
+        strcpy_s((char*)pGlobal, (Length + 1) * sizeof(char), pText);
+        #else
         strncpy((char*)pGlobal, pText, Length);
+        #endif
+
         SetClipboardData(CF_TEXT, pGlobal);
 
         GlobalFree(pGlobal);
